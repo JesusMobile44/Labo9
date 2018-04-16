@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Scanner;
 
 public class Telephone implements Serializable {
     private String info;
@@ -22,10 +23,8 @@ public class Telephone implements Serializable {
 
     public static Telephone creerTelephone() {
         Telephone telephone = new Telephone();
-        System.out.print("À quoi correspond ce numéro (cellulaire, maison, travail, …) ? ");
-        telephone.info = Liste.sc.next();
-        System.out.print("Quel est le numéro ? ");
-        telephone.num = Liste.sc.next();
+        telephone.info = Contact.demanderString("À quoi correspond ce numéro (cellulaire, maison, travail, …) ? ");
+        telephone.num = demanderTel();
         return telephone;
     }
 
@@ -36,5 +35,33 @@ public class Telephone implements Serializable {
         if (!input.equals("")) {
             num=input;
         }
+    }
+    public static String demanderTel(){
+        Scanner sc = new Scanner(System.in);
+        String tel = null;
+        boolean trouve = false;
+        while (trouve==false){
+            System.out.println("Quel est le numéro ? (xxx-xxx-xxxx)");
+            tel = sc.next();
+            for (int i=0;i<tel.length();i++){
+                if (i==3||i==7){
+                    if (tel.charAt(i)=='-'){
+                        trouve=false;
+                    }
+                    else{
+                        trouve=true;
+                    }
+                }
+                else{
+                    if ((int)tel.charAt(i)<46 || (int)tel.charAt(i)>57){
+                        trouve=false;
+                    }
+                    else{
+                        trouve=true;
+                    }
+                }
+            }
+        }
+        return tel;
     }
 }

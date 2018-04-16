@@ -22,8 +22,7 @@ public class Occupation implements Serializable {
 
     public void ajouterOccupation(){
         System.out.println("Occupation : ");
-        System.out.print("  Poste :");
-        poste=Liste.sc.next();
+        poste= Contact.demanderString("  Poste :");
         getEntreprise().ajouterEntreprise();
     }
 

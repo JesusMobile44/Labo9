@@ -22,8 +22,7 @@ public class Entreprise implements Serializable {
 
     public void ajouterEntreprise(){
         System.out.println("  Entreprise : ");
-        System.out.print("    Nom : ");
-        nom=Liste.sc.next();
+        nom= Contact.demanderString("    Nom : ");
         getAdresse().ajouterAdresse();
     }
 

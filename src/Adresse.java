@@ -59,22 +59,17 @@ public class Adresse implements Serializable {
     public void ajouterAdresse(){
         String input;
         System.out.println("Adresse :");
-        System.out.print("  Numéro de porte : ");
-        numP=Liste.sc.next();
-        System.out.print("  Rue : ");
-        rue=Liste.sc.next();
+        numP = Contact.demanderInt("  Numéro de porte : ");
+        rue = Contact.demanderString("  Rue : ");
         System.out.print("  Appartement : ");
         input=Liste.sc.nextLine().trim();
         input=Liste.sc.nextLine().trim();
         if(!input.equals("")) {
             app=input;
         }
-        System.out.print("  Ville : ");
-        ville=Liste.sc.next();
-        System.out.print("  Province : ");
-        province=Liste.sc.next();
-        System.out.print("  Pays :");
-        pays=Liste.sc.next();
+        ville = Contact.demanderString("  Ville : ");
+        province = Contact.demanderString("  Province : ");
+        pays = Contact.demanderString("  Pays : ");
     }
 
     public void modifierAdresse(){
@@ -82,6 +77,7 @@ public class Adresse implements Serializable {
         System.out.println("Adresse : ");
         System.out.print("  Numéro de porte (" + numP + ") : ");
         input=Liste.sc.nextLine().trim();
+        //Contact.verifyInt(numP)
         if(!input.equals("")) {
             numP=input;
         }
@@ -120,8 +116,5 @@ public class Adresse implements Serializable {
         System.out.println("  Ville : "+ville);
         System.out.println("  Province : "+province);
         System.out.println("  Pays : "+pays);
-    }
-    public void verifyAddresse(){
-
     }
 }

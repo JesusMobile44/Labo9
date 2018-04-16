@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import static java.lang.Character.toLowerCase;
 
@@ -56,16 +57,8 @@ public class Contact implements Serializable {
         Contact tempContact=new Contact();
         System.out.println("Veuillez entrer les informations suivantes :");
         //CONTACT
-        while(bonChar==true){
-            System.out.print("Prénom : ");
-            repString=Liste.sc.next();
-            bonChar=verifyString(repString);
-            tempContact.prenom=repString;
-            System.out.print("Nom : ");
-            repString=Liste.sc.next();
-            bonChar=verifyString(repString);
-            tempContact.nom=repString;
-        }
+        tempContact.prenom=demanderString("Prénom : ");
+        tempContact.nom=demanderString("Nom : ");
         //ADRESSE
         tempContact.getAdresse().ajouterAdresse();
         //OCCUPATION
@@ -151,11 +144,26 @@ public class Contact implements Serializable {
                 i++;
             }
             else{
-                System.out.println("ERREUR: entrez des caractères valides (a-z)");
                 ok=false;
             }
         }
         return ok;
+    }
+    public static String demanderString(String valeur){
+        Scanner sc = new Scanner(System.in);
+        String mot = null;
+        boolean trouve = false;
+        while (trouve ==false){
+            System.out.println(valeur);
+            mot = sc.next();
+            if (verifyString(mot)==true){
+                trouve=true;
+            }
+            else{
+                System.out.println("ERREUR: entrez des caractères valides (a-z)");
+            }
+        }
+        return mot;
     }
     public static boolean verifyInt(String mot){
         int i=0;
@@ -165,10 +173,25 @@ public class Contact implements Serializable {
                 i++;
             }
             else{
-                System.out.println("ERREUR: entrez des caractères valides (0-9)");
                 ok=false;
             }
         }
         return ok;
+    }
+    public static String demanderInt(String valeur){
+        Scanner sc = new Scanner(System.in);
+        String mot = null;
+        boolean trouve = false;
+        while (trouve ==false){
+            System.out.println(valeur);
+            mot = sc.next();
+            if (verifyInt(mot)==true){
+                trouve=true;
+            }
+            else{
+                System.out.println("ERREUR: entrez des caractères valides (0-9)");
+            }
+        }
+        return mot;
     }
 }
